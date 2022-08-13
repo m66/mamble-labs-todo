@@ -1,0 +1,12 @@
+.hide-items {
+    display: flex;
+    justify-content: end;
+
+    input {
+        margin-right: 15px;
+    }
+
+    input:hover, label:hover {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,30 @@
+.list-item {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        background-color: rgb(241, 239, 239);
+    }
+
+    &:not(:last-child) {
+        border-bottom: 1px solid grey;
+    }
+
+    label:hover {
+        cursor: pointer;
+    }
+
+    input {
+        margin-right: 35px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .delete-btn:hover {
+        cursor: pointer;
+    }
+}
