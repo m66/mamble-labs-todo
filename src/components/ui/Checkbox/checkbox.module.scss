@@ -1,0 +1,12 @@
+.checkboxRoot {
+    display: flex;
+    justify-content: end;
+}
+
+.checkbox {
+    margin-right: 15px;
+}
+
+.checkbox:hover, .label:hover {
+    cursor: pointer;
+}

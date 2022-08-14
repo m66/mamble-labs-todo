@@ -1,7 +1,8 @@
-.form-add {
+.formAdd {
     width: 100%;
     margin-top: 83px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     input {
@@ -12,7 +13,6 @@
 
     button {
         max-height: 52px;
-        // max-width: 100px;
         padding: 12px 31.5px;
         margin-left: 24px;
         border: transparent;
@@ -25,4 +25,8 @@
             cursor: pointer;
         }
     }
+}
+
+.errorMessage {
+    color: #f00;
 }
