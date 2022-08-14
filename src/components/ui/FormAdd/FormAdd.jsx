@@ -1,25 +1,38 @@
 import { useState } from "react";
-import "./formAdd.scss";
+import { validateAddField } from "../../../helpers/validation";
+
+import styles from "./formAdd.module.scss";
 
 const FormAdd = ({ onAdd }) => {
   const [text, setText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <form
-      className="form-add"
+      className={styles.formAdd}
       onSubmit={(e) => {
         e.preventDefault();
         onAdd(text);
         setText("");
       }}
     >
-      <input
-        type="text"
-        value={text}
-        placeholder="Write here"
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button>Add</button>
+      <span>Task</span>
+      <div className={styles.formField}>
+        <input
+          type="text"
+          value={text}
+          placeholder="Write here"
+          className={styles.addField}
+          onChange={(e) => {
+            setText(e.target.value);
+            setErrorMessage(validateAddField(e.target.value));
+          }}
+        />
+        <button className={styles.addBtn} disabled={(errorMessage || text === "") && "disabled"}>
+          Add
+        </button>
+      </div>
+      <p className={styles.errorMessage}>{errorMessage}</p>
     </form>
   );
 };

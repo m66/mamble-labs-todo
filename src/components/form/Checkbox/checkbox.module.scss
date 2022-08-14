@@ -1,0 +1,16 @@
+@use '../../../assets/global.scss';
+
+.checkboxRoot {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.checkbox {
+    margin-right: 15px;
+    border: red;
+}
+
+.checkbox:hover,
+.label:hover {
+    cursor: pointer;
+}

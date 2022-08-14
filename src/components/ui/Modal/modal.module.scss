@@ -1,0 +1,49 @@
+@use "../../../assets/global.scss";
+
+.modalBackground {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+.modal {
+    width: 400px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid global.$color-blue;
+    background-color: #fff;
+    border-radius: 4px;
+    z-index: 99;
+
+    p {
+        margin-bottom: 30px;
+        color: global.$color-blue;
+        font-size: 18px;
+    }
+
+    button {
+        padding: 5px 20px;
+        background-color: transparent;
+        border: transparent;
+        border-radius: 3px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #ccc;
+        }
+
+        &:first-child {
+            margin-right: 10px;
+        }
+    }
+}

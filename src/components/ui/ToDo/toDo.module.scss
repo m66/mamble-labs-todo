@@ -1,0 +1,11 @@
+.toDo {
+    margin: 146px 80px 20px 80px;
+    position: relative;
+}
+
+@media only screen and (max-width: 768px) {
+    .toDo {
+        margin: 88px 24px 20px 24px;
+        position: relative;
+    }
+}
