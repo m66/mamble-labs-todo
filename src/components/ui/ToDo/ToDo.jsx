@@ -1,13 +1,20 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Checkbox from "../../form/Checkbox/Checkbox";
 import FormAdd from "../FormAdd/FormAdd";
-import Checkbox from "../Checkbox/Checkbox";
 import List from "../List/List";
+import Modal from "../Modal/Modal";
 
-import "./toDo.scss";
+import styles from "./toDo.module.scss";
 
 const ToDo = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : []);
   const [hideChecked, setHideChecked] = useState(false);
+  const [isActiveModal, setIsActiveModal] = useState(false);
+  const removedIdRef = useRef();
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos])
 
   function handleHideChange(showChecked) {
     setHideChecked(showChecked);
@@ -15,38 +22,54 @@ const ToDo = () => {
 
   function handleAdd(text) {
     setTodos([
-      ...todos,
       {
         id: new Date().getTime(),
         text: text,
-        checked: false,
+        checked: true,
       },
+      ...todos
     ]);
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
 
   function handleListChange(newList) {
     setTodos(newList);
   }
 
+  function getRemovedId(id) {
+    setIsActiveModal(true);
+    removedIdRef.current = id;
+  }
+
+  function onDelete(response) {
+    if (response) {
+      setTodos(todos.filter((item) => item.id !== removedIdRef.current));
+      setIsActiveModal(false);
+    } else {
+      setIsActiveModal(false);
+    }
+  }
+
   return (
-    <div className="to-do">
+    <div className={styles.toDo}>
       {todos.length ? (
         <Checkbox
           onChange={handleHideChange}
-          label="Hide checked items"
+          label="Hide complited"
           checked={hideChecked}
           name="hide"
         />
       ) : null}
       <FormAdd onAdd={handleAdd} />
       <List
-        onDelete={(id) => {
-          setTodos(todos.filter((item) => item.id !== id));
-        }}
+        getRemovedId={getRemovedId}
         onChange={handleListChange}
         hideChecked={hideChecked}
         todos={todos}
       />
+      {isActiveModal && (
+        <Modal onClose={setIsActiveModal} onDelete={onDelete} />
+      )}
     </div>
   );
 };

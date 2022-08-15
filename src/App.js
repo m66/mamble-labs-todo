@@ -1,5 +1,6 @@
-import ToDo from './components/ui/ToDo/ToDo';
-import styles from './app.module.css';
+import ToDo from "./components/ui/ToDo/ToDo";
+
+import styles from "./app.module.css";
 
 function App() {
   return (

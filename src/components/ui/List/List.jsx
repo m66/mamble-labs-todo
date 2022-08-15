@@ -1,9 +1,9 @@
 import EmptyToDoList from "../EmptyToDoList/EmptyToDoList";
 import ListItem from "../ListItem/ListItem";
 
-import "./list.scss";
+import styles from "./list.module.scss";
 
-const List = ({ todos, onDelete, onChange, hideChecked }) => {
+const List = ({ todos, getRemovedId, onChange, hideChecked, setIsActiveModal }) => {
   function handleChange(checked, itemId) {
     const newTodoList = todos.map((item) =>
       item.id === itemId ? { ...item, checked } : item
@@ -13,14 +13,15 @@ const List = ({ todos, onDelete, onChange, hideChecked }) => {
   }
 
   return (
-    <div className="list">
+    <div className={styles.list}>
       {todos.length ? (
         todos
           .filter((item) => !hideChecked || !item.checked)
           .map(({ checked, id, text }) => (
             <ListItem
+              setIsActiveModal={setIsActiveModal}
               onChange={handleChange}
-              onDelete={onDelete}
+              getRemovedId={getRemovedId}
               checked={checked}
               text={text}
               key={id}

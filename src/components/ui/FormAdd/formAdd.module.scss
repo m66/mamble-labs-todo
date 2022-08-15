@@ -1,3 +1,5 @@
+@use '../../../assets/global.scss';
+
 .formAdd {
     width: 100%;
     margin-top: 83px;
@@ -5,28 +7,57 @@
     flex-direction: column;
     justify-content: center;
 
-    input {
-        max-height: 52px;
-        width: 954px;
-        padding: 12px 16px;
+    span {
+        font-weight: 400;
+        font-size: 18px;
     }
+}
 
-    button {
-        max-height: 52px;
-        padding: 12px 31.5px;
-        margin-left: 24px;
-        border: transparent;
-        border-radius: 4px;
-        background: #008594;
+.addField {
+    // max-height: 52px;
+    width: 100%;
+    padding: 12px 16px;
+}
+
+.addBtn {
+    max-width: 100px;
+    margin-left: 24px;
+    padding: 12px 31.5px;
+    color: #fff;
+    background: global.$color-blue;
+    border: transparent;
+    border-radius: 4px;
+
+    &:hover {
         color: #fff;
-        
-        &:hover {
-            background-color: #02707c;
-            cursor: pointer;
-        }
+        background-color: #02707c;
+        cursor: pointer;
     }
 }
 
 .errorMessage {
-    color: #f00;
+    color: #ff0000;
+}
+
+.formField {
+    display: flex;
+    align-items: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+    .formAdd {
+        margin-top: 53px;
+
+        input {
+            width: -webkit-fill-available;
+        }
+    }
+
+    .formField {
+        flex-flow: column wrap;
+    }
+
+    .addBtn {
+        margin-top: 24px;
+    }
 }

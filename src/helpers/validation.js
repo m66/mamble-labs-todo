@@ -1,7 +1,7 @@
 let required = (val) => (val ? null : "The field is required");
 
 let maxLength = (length) => (val) =>
-  val.length > length ? `The maximum length is ${length}` : null;
+  val.length > length ? `Task content can contain max ${length} characters.` : null;
 
 let createValidation = (validations) => (val) => {
   for (let validation of validations) {

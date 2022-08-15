@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
-import Checkbox from "../Checkbox/Checkbox";
+import Checkbox from "../../form/Checkbox/Checkbox";
 
-import "./listItem.scss";
+import styles from "./listItem.module.scss";
 
-const ListItem = ({ id, text, checked, onDelete, onChange }) => {
+const ListItem = ({ id, text, checked, getRemovedId, onChange, setIsActiveModal }) => {
   return (
-    <div className="list-item">
+    <div className={styles.listItem}>
       <Checkbox
         onChange={(newVal) => onChange(newVal, id)}
         checked={checked}
@@ -15,9 +15,10 @@ const ListItem = ({ id, text, checked, onDelete, onChange }) => {
       />
       <FontAwesomeIcon
         icon={faClose}
-        className="delete-btn"
+        className={styles.deleteBtn}
         onClick={() => {
-          onDelete(id);
+          getRemovedId(id);
+          setIsActiveModal(true);
         }}
       />
     </div>

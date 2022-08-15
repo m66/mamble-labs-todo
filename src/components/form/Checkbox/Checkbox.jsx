@@ -10,7 +10,9 @@ const Checkbox = ({ checked, onChange, label, name }) => (
       name={name}
       id={name}
     />
-    <label htmlFor={name} className={styles.label}>{label}</label>
+    <label htmlFor={name} className={styles.label}>
+      {label}
+    </label>
   </div>
 );
 export default Checkbox;
