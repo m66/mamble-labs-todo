@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+
 import Checkbox from "../../form/Checkbox/Checkbox";
 import FormAdd from "../FormAdd/FormAdd";
 import List from "../List/List";
@@ -7,14 +8,18 @@ import Modal from "../Modal/Modal";
 import styles from "./toDo.module.scss";
 
 const ToDo = () => {
-  const [todos, setTodos] = useState(localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : []);
+  const [todos, setTodos] = useState(
+    localStorage.getItem("todos")
+      ? JSON.parse(localStorage.getItem("todos"))
+      : []
+  );
   const [hideChecked, setHideChecked] = useState(false);
   const [isActiveModal, setIsActiveModal] = useState(false);
   const removedIdRef = useRef();
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos])
+  }, [todos]);
 
   function handleHideChange(showChecked) {
     setHideChecked(showChecked);
@@ -27,7 +32,7 @@ const ToDo = () => {
         text: text,
         checked: true,
       },
-      ...todos
+      ...todos,
     ]);
     localStorage.setItem("todos", JSON.stringify(todos));
   }
